@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from taskmanager.models import Task, Category
+from taskmanager.models import Category, Task
 
 
 class CategorySerializer(serializers.ModelSerializer):

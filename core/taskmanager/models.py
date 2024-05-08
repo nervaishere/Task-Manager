@@ -1,10 +1,9 @@
-from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 from simple_history.models import HistoricalRecords
+
 from .enums import Priority, Status
 
 
@@ -36,7 +35,9 @@ class Task(models.Model):
     status = models.CharField(
         _("status"), choices=Status.choices, default=Status.TODO, max_length=11
     )
-    priority = models.IntegerField(_("priority"), choices=Priority.choices, default=Priority.HIGH)
+    priority = models.IntegerField(
+        _("priority"), choices=Priority.choices, default=Priority.HIGH
+    )
     category = models.ForeignKey(
         "taskmanager.Category", verbose_name=_(""), on_delete=models.CASCADE, null=True
     )
